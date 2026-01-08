@@ -1,0 +1,262 @@
+.page {
+  height: 100vh;
+  background: linear-gradient(135deg, #161647, #2b2b6e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  animation: backgroundPulse 10s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundPulse {
+  0% {
+    background: linear-gradient(135deg, #161647, #2b2b6e);
+    filter: brightness(1);
+  }
+  100% {
+    background: linear-gradient(135deg, #2b2b6e, #161647);
+    filter: brightness(1.1);
+  }
+}
+
+.card {
+  width: 360px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  animation: slideUp 0.8s ease-out, fadeIn 1s ease-out;
+  transform: translateY(0);
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.top {
+  background: #24245d;
+  color: white;
+  text-align: center;
+  padding: 30px 20px 60px;
+  border-bottom-left-radius: 100% 60px;
+  border-bottom-right-radius: 100% 60px;
+}
+
+.top span {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.top h2 {
+  margin-top: 10px;
+  font-size: 28px;
+  animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  0% { text-shadow: 0 0 5px rgba(255,255,255,0.3); }
+  100% { text-shadow: 0 0 20px rgba(255,255,255,0.6), 0 0 30px rgba(255,255,255,0.4); }
+}
+
+.form {
+  padding: 40px 30px 30px;
+  text-align: center;
+}
+
+.form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 5px;
+  border-radius: 6px;
+  border: 2px solid #eee;
+  background: #fff;
+  outline: none;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.form input:focus {
+  border-color: #5b3f95;
+}
+
+.form input.error {
+  border-color: #dc3545;
+  background-color: #fff5f5;
+}
+
+.field-error {
+  color: #dc3545;
+  font-size: 12px;
+  margin-bottom: 10px;
+  text-align: left;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.password-requirements {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0 0;
+  font-size: 11px;
+  animation: slideDown 0.3s ease-out;
+}
+
+.password-requirements li {
+  color: #dc3545;
+  margin: 2px 0;
+  position: relative;
+  padding-left: 15px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.password-requirements li:before {
+  content: '✗';
+  position: absolute;
+  left: 0;
+  color: #dc3545;
+  transition: all 0.3s ease;
+}
+
+.password-requirements li.valid {
+  color: #28a745;
+  animation: validCheck 0.5s ease;
+}
+
+.password-requirements li.valid:before {
+  content: '✓';
+  color: #28a745;
+  animation: checkmark 0.5s ease;
+}
+
+@keyframes validCheck {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes checkmark {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+.form button {
+  width: 100%;
+  padding: 12px;
+  background: #5b3f95;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.form button:hover:not(:disabled) {
+  background: #4a327a;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(91, 63, 149, 0.4);
+}
+
+.form button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(91, 63, 149, 0.4);
+}
+
+.form button:not(:disabled):before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.form button:not(:disabled):hover:before {
+  width: 300px;
+  height: 300px;
+}
+
+.form button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.loader {
+  margin-top: 10px;
+  color: #666;
+}
+
+.error {
+  margin-top: 10px;
+  color: #dc3545;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.demo-info {
+  margin-top: 15px;
+  text-align: center;
+  color: #666;
+  font-size: 12px;
+}
+
+.password-info {
+  margin-top: 10px;
+  text-align: center;
+  color: #666;
+  font-size: 11px;
+  background-color: #f8f9fa;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #e9ecef;
+}
+
+.password-info small {
+  display: block;
+  margin: 2px 0;
+}
+
+.demo-info small {
+  display: block;
+  margin: 2px 0;
+}

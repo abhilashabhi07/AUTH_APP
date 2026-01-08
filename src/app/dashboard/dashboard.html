@@ -1,0 +1,27 @@
+<div class="dashboard">
+  <header class="header">
+    <h2>Dashboard</h2>
+    <button (click)="logout()" class="logout-btn" title="Click to logout and return to login page">Logout</button>
+  </header>
+
+  <main class="content">
+    <h3>Users</h3>
+    <div *ngIf="loading" class="loader">Loading users...</div>
+    <div *ngIf="errorMessage" class="error">
+      {{ errorMessage }}
+      <button (click)="retry()" class="retry-btn">Retry</button>
+    </div>
+    <div *ngIf="!loading && !errorMessage" class="users-grid">
+      <div *ngFor="let user of users; let i = index" class="user-card"
+           [style.animation-delay.ms]="i * 100">
+        <h4>{{ user.name }}</h4>
+        <p><strong>Username:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Phone:</strong> {{ user.phone }}</p>
+        <p><strong>Website:</strong> {{ user.website }}</p>
+        <p><strong>Company:</strong> {{ user.company?.name }}</p>
+        <p><strong>Address:</strong> {{ user.address?.street }}, {{ user.address?.city }}</p>
+      </div>
+    </div>
+  </main>
+</div>
